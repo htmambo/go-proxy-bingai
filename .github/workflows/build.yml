@@ -42,12 +42,13 @@ jobs:
           git config --global user.email "htmambo@gmail.com"
           git config --global user.name "htmambo"
           git add web/*
-          git commit -m "[Upgrade] 🚀 Upload latest webFile"
+          git commit -m "[Upgrade] 🚀 Upload latest webFile" || true
           git push
 
       - name: Build binary
         run: |
           GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -tags netgo -trimpath -o go-proxy-bingai main.go && tar -zcvf go-proxy-bingai-linux-amd64.tar.gz go-proxy-bingai
+          cp go-proxy-bingai web
 
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v1
