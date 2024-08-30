@@ -6,7 +6,7 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
-    if: github.repository == 'htmambo/go-proxy-bingai'
+    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.message, 'release') }}
     steps:
       - uses: actions/checkout@v3
 
