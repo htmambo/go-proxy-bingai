@@ -38,6 +38,7 @@ jobs:
 
       - name: Commit latest webFile
         run: |
+          rm -rf frontend/package-lock.json
           git config --global user.email "htmambo@gmail.com"
           git config --global user.name "htmambo"
           git add web/*
